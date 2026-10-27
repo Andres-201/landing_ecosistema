@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ecosistema Digital Solidario Cafetero · Tolima</title>
+<meta name="description" content="10 asociaciones y 227 familias caficultoras del Tolima conectan el origen de su café con el mundo: trazabilidad, comercialización conjunta y formación.">
+<link rel="icon" type="image/png" href="img/logos/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Ecosistema Digital Solidario Cafetero, inicio">
+      <img src="img/logos/emblema-pequeno.webp" alt="" width="52" height="42">
+      <span><b><span style="color:var(--brand-eco)">ECO</span><span style="color:var(--leaf)">SISTEMA</span></b><small>Digital Solidario Cafetero</small></span>
+    </a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">☰</button>
+    <nav class="nav" id="nav">
+      <a href="#inicio" data-r="inicio">Inicio</a>
+      <a href="#ecosistema" data-r="ecosistema">El Ecosistema</a>
+      <a href="#cafe" data-r="cafe">Nuestro Café</a>
+      <a href="#productores" data-r="productores">Productores</a>
+      <a href="#publicaciones" data-r="publicaciones">Publicaciones</a>
+      <a href="#cotizar" class="cta" data-r="cotizar">Solicitar cotización</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ============ INICIO ============ -->
+<section class="page" data-page="inicio">
+  <div class="hero cover">
+    <img class="cover-img" src="img/fotos/portada-cosecha.webp" alt="Manos de un caficultor recogiendo cerezas maduras de café, con las montañas del Tolima al fondo" width="1600" height="600">
+    <div class="wrap">
+      <div class="copy">
+        <span class="tagline">Conectando el origen del café con el mundo</span>
+        <h1>Cada grano tiene una historia, <em>conectamos su origen con el mundo.</em></h1>
+        <p class="lead">Descubre las historias detrás de cada finca, conoce a quienes cultivan nuestro café y explora sus orígenes. Una plataforma donde la tradición cafetera, la trazabilidad y la cooperación solidaria abren caminos hacia nuevos mercados.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#cotizar">Solicitar cotización</a>
+          <a class="btn btn-ghost" href="#territorio" data-scroll="territorio">Ver el territorio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats"><div class="wrap" id="stats"></div></div>
+
+  <section class="sec mapsec" id="territorio">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Territorio</span>
+        <h2>Dónde nace nuestro café</h2>
+        <p class="lead">Las asociaciones del ecosistema están en siete municipios del Tolima. Toca cualquier municipio del Tolima para ver su información, o aleja el mapa para verlo dentro de Colombia.</p>
+      </div>
+      <div class="mapgrid">
+        <div class="mapbox">
+          <div class="mapctl" role="group" aria-label="Vista del mapa"><button class="chip" id="vTol" aria-pressed="true">Tolima</button><button class="chip" id="vCol" aria-pressed="false">Toda Colombia</button></div>
+          <svg id="tolMap" role="group" aria-label="Mapa de Colombia enfocado en los 47 municipios del Tolima"></svg>
+          <button class="inset" id="mapInset" aria-label="Ver Tolima dentro de Colombia"><svg id="insetSvg" aria-hidden="true"></svg><span>Colombia</span></button>
+          <div class="maptip" id="mapTip" hidden></div>
+          <div class="maplegend"><span><i class="lg-pin">1</i>Asociación (toca para ver su ficha)</span><span><i class="lg-on"></i>Municipios con asociaciones</span><span><i class="lg-off"></i>Otros municipios del Tolima</span><span><i class="lg-dep"></i>Otros departamentos</span></div>
+        </div>
+        <div class="mappanel">
+          <div class="mapcard" id="mapCard"></div>
+          <div class="munchips" id="munChips" aria-label="Municipios con asociaciones"></div>
+          <p class="mapsrc">Límites municipales: DANE, Marco Geoestadístico Nacional 2018.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2>Del cafetal al comprador, en siete pasos</h2>
+        <p class="lead">Cada paso tiene un responsable claro y reglas que protegen al productor, a la asociación y al comprador. Toca cada etapa para ver quién responde y qué se controla.</p>
+      </div>
+      <div class="journey">
+        <div class="steps" id="steps" role="tablist" aria-label="Etapas de la cadena"></div>
+        <div class="panel" id="stepPanel" role="tabpanel"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt">
+    <div class="wrap split">
+      <div style="display:grid;gap:18px">
+        <span class="eyebrow">Trazabilidad</span>
+        <h2 style="font-size:clamp(1.8rem,3.6vw,2.6rem)">Cada lote cuenta su historia con un código QR</h2>
+        <p class="lead">El comprador consulta la ficha autorizada del lote: origen por zona, proceso, trilla con balance de masa, bodega y despacho. La ubicación exacta de la finca no se publica sin autorización del productor.</p>
+        <div><a class="btn btn-primary" href="#cafe" data-goto="trace">Ver una ficha de ejemplo</a></div>
+      </div>
+      <div id="miniLot"></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head" style="display:flex;justify-content:space-between;align-items:end;max-width:none;flex-wrap:wrap;gap:16px">
+        <div style="display:grid;gap:10px"><span class="eyebrow">Publicaciones</span><h2>Novedades del ecosistema</h2></div>
+        <a class="btn btn-ghost" href="#publicaciones">Ver todas</a>
+      </div>
+      <div class="grid g3" id="homePosts"></div>
+    </div>
+  </section>
+
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">¿Quiénes pertenecen?</span><h2>Las 10 asociaciones del ecosistema</h2><p class="lead">Organizaciones de pequeños caficultores de siete municipios del Tolima. Toca una para conocer su café.</p></div>
+      <div class="filters" id="asoFilters"></div>
+      <div class="asogrid" id="members"></div>
+      <div class="asodetail" id="asoDetail" hidden></div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ ECOSISTEMA ============ -->
+<section class="page" data-page="ecosistema" hidden>
+  <div class="hero sub"><div class="wrap">
+    <div class="copy">
+      <span class="eyebrow">Sobre el ecosistema</span>
+      <h1>Una apuesta colectiva de 10 asociaciones cafeteras</h1>
+      <p class="lead">Comercialización conjunta, trazabilidad verificable, gestión financiera separada por organización y educación para los productores asociados.</p>
+    </div>
+    <div class="hero-art"><div class="disc"></div><div data-branch></div></div>
+  </div></div>
+
+  <section class="sec alt">
+    <div class="wrap split">
+      <div style="display:grid;gap:16px">
+        <span class="eyebrow">¿Qué es?</span>
+        <h2 style="font-size:clamp(1.7rem,3.2vw,2.4rem)">Una sola solución para la oferta de las asociaciones</h2>
+        <p>El ecosistema integra el registro de productores, fincas y lotes; la trilla, el almacenamiento y el despacho; la atención a compradores nacionales e internacionales; las ventas por mandato y las liquidaciones; las campañas de promoción y la formación digital de los productores.</p>
+        <p>La comercialización se hace desde una <b>Unidad Comercial Conjunta</b>. Cada asociación conserva su autonomía sobre productores, lotes, inventarios, trilla, bodega, transporte y pago a sus caficultores.</p>
+      </div>
+      <div class="card" style="gap:14px">
+        <span class="tag">Objetivo general</span>
+        <p style="color:var(--ink);font-size:1.12rem;font-family:var(--f-display);line-height:1.35">Fortalecer la autonomía económica, la asociatividad y el desarrollo sostenible de los pequeños caficultores colombianos mediante un ecosistema digital de propiedad y gestión colectiva que integre asociaciones cafeteras de diferentes regiones del país, facilite el acceso a mercados nacionales e internacionales y promueva la trazabilidad, la transparencia, la formación y la cooperación solidaria.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">¿Para qué?</span><h2>Objetivos de la plataforma</h2><p class="lead">Tres metas medibles para los primeros 36 meses del ecosistema.</p></div>
+      <div class="grid g3" id="objectives"></div>
+    </div>
+  </section>
+
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Actores</span><h2>Quién hace qué, y hasta dónde</h2><p class="lead">Cada actor tiene una responsabilidad principal y un límite que protege a los demás.</p></div>
+      <div class="filters" id="actorFilters"></div>
+      <div class="actors" id="actors"></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Gobernanza</span><h2>Decisiones compartidas, operación sin bloqueos</h2><p class="lead">Las decisiones estratégicas requieren la aprobación de ambas asociaciones. Las ordinarias se votan o se delegan. Si hay desacuerdo, la operación válida continúa.</p></div>
+      <div class="grid g4" id="organs"></div>
+      <div class="split" style="margin-top:40px;align-items:start">
+        <div style="display:grid;gap:14px">
+          <h3 style="font-size:1.5rem">Si hay un bloqueo estratégico</h3>
+          <ol class="olsteps" id="deadlock"></ol>
+        </div>
+        <div style="display:grid;gap:14px">
+          <h3 style="font-size:1.5rem">Lo que ya acordamos</h3>
+          <div id="agreements"></div>
+          <button class="btn btn-ghost" id="moreAgr" style="justify-self:start">Ver los 18 acuerdos</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Hoja de ruta</span><h2>Por etapas, empezando por lo esencial</h2></div>
+      <div class="road" id="road"></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap split" style="align-items:start">
+      <div style="display:grid;gap:14px">
+        <span class="eyebrow">Alcance</span>
+        <h2 style="font-size:clamp(1.7rem,3.2vw,2.4rem)">Qué incluye y qué no</h2>
+        <div class="inout">
+          <div class="card"><span class="tag">Incluye</span><ul id="inScope"></ul></div>
+          <div class="card"><span class="tag cherry">Por ahora no</span><ul id="outScope"></ul></div>
+        </div>
+      </div>
+      <div style="display:grid;gap:14px">
+        <span class="eyebrow">Glosario</span>
+        <h2 style="font-size:clamp(1.7rem,3.2vw,2.4rem)">Términos del ecosistema</h2>
+        <div id="glossary"></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ CAFÉ ============ -->
+<section class="page" data-page="cafe" hidden>
+  <div class="hero sub"><div class="wrap">
+    <div class="copy">
+      <span class="eyebrow">Marketplace B2B</span>
+      <h1>Nuestro café: pergamino seco y verde</h1>
+      <p class="lead">Lotes identificados por asociación, con trazabilidad autorizada. No publicamos precios: cada negociación se hace con una cotización privada.</p>
+      <div class="actions"><a class="btn btn-primary" href="#cotizar">Solicitar cotización</a></div>
+    </div>
+    <div class="hero-art"><div class="disc"></div><div data-branch></div></div>
+  </div></div>
+
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Presentaciones</span><h2>Dos productos, un mismo origen</h2></div>
+      <div class="grid g2" id="products"></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Catálogo</span><h2>Lotes disponibles</h2></div>
+      <div class="notice" style="margin-bottom:22px"><b>Ejemplo</b><span>Dos lotes por asociación con sus variedades y procesos. Las cantidades son ilustrativas y se reemplazarán por los lotes reales que cada asociación autorice publicar.</span></div>
+      <div class="lotbar">
+        <div class="filters" id="lotFilters" style="margin:0"></div>
+        <label class="f sm"><span>Variedad</span><select id="fVar"></select></label>
+        <label class="f sm"><span>Proceso</span><select id="fProc"></select></label>
+        <label class="f sm"><span>Asociación</span><select id="fAso"></select></label>
+      </div>
+      <p class="lotcount" id="lotCount"></p>
+      <div class="grid g3" id="lots"></div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="trace">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Ficha de trazabilidad</span><h2>Consulta la historia de un lote</h2><p class="lead">Así verá el comprador la ficha a la que lleva el QR del empaque. Elige un lote de ejemplo.</p></div>
+      <div class="lotsel" id="lotSel" style="margin-bottom:20px"></div>
+      <div class="trace" id="traceView"></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Cómo compramos juntos</span><h2>Ventas, muestras y despachos</h2></div>
+      <div class="ptabs" id="procTabs"></div>
+      <div class="split" style="align-items:start">
+        <ol class="olsteps" id="procSteps"></ol>
+        <div class="card" id="procNote"></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ COTIZAR ============ -->
+<section class="page" data-page="cotizar" hidden>
+  <div class="hero sub"><div class="wrap">
+    <div class="copy">
+      <span class="eyebrow">Compradores</span>
+      <h1>Solicita una cotización privada</h1>
+      <p class="lead">Pide por lotes específicos o describe lo que necesitas. La Unidad Comercial Conjunta revisa la oferta de ambas asociaciones y te responde con una oferta privada.</p>
+    </div>
+    <div class="hero-art"><div class="disc"></div><div data-branch></div></div>
+  </div></div>
+  <section class="sec alt" style="padding-top:48px">
+    <div class="wrap split q" style="align-items:start">
+      <form class="formbox" id="quoteForm" novalidate>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;align-items:center">
+          <div class="seg" role="group" aria-label="Tipo de solicitud">
+            <button type="button" data-mode="lote" aria-pressed="true">Por lote</button>
+            <button type="button" data-mode="necesidad" aria-pressed="false">Por necesidad</button>
+          </div>
+          <div class="seg" role="group" aria-label="Mercado">
+            <button type="button" data-mkt="nac" aria-pressed="true">Nacional</button>
+            <button type="button" data-mkt="int" aria-pressed="false">Internacional</button>
+          </div>
+        </div>
+        <div class="fields">
+          <label class="f"><span>Empresa compradora</span><input type="text" id="q-emp" required placeholder="Razón social"></label>
+          <label class="f"><span>Correo de contacto</span><input type="email" id="q-mail" required placeholder="compras@empresa.com"></label>
+        </div>
+        <div id="modeLote" class="fields">
+          <div class="full"><label class="f" style="margin-bottom:6px"><span>Lote(s) de interés <span class="h">· marca uno o varios y la cantidad</span></span></label><div class="checks" id="lotChecks"></div></div>
+          <label class="f"><span>Empaque</span><select id="q-emp2"><option>Saco de fique 70 kg</option><option>Saco con bolsa hermética</option><option>Caja al vacío</option><option>Otro (indicar en observaciones)</option></select></label>
+        </div>
+        <div id="modeNec" class="fields" hidden>
+          <label class="f"><span>Tipo de café</span><select id="n-tipo"><option>Café verde</option><option>Café pergamino seco (CPS)</option></select></label>
+          <label class="f"><span>Cantidad (kg)</span><input type="number" id="n-kg" min="1" placeholder="1000"></label>
+          <label class="f"><span>Calidad / perfil buscado</span><input type="text" id="n-perfil" placeholder="Ej.: dulce, acidez media, notas a panela"></label>
+          <label class="f"><span>Proceso</span><select id="n-proc"><option>Cualquiera</option><option>Lavado</option><option>Honey</option><option>Natural</option></select></label>
+          <label class="f full"><span>Certificaciones requeridas</span><input type="text" id="n-cert" placeholder="Ej.: orgánico, Rainforest, ninguna"></label>
+        </div>
+        <div class="fields">
+          <label class="f"><span>Destino</span><input type="text" id="q-dest" placeholder="Ciudad de entrega"></label>
+          <label class="f"><span>Fecha deseada</span><input type="date" id="q-date"></label>
+        </div>
+        <div id="intl" class="fields" hidden>
+          <label class="f"><span>País de destino</span><input type="text" id="i-pais" placeholder="Ej.: Estados Unidos"></label>
+          <label class="f"><span>Moneda</span><select id="i-mon"><option>USD</option><option>EUR</option><option>COP</option></select></label>
+          <label class="f"><span>Término de entrega (Incoterm)</span><select id="i-inc"><option>Por acordar</option><option>EXW</option><option>FCA</option><option>FOB</option><option>CFR</option><option>CIF</option><option>DAP</option></select></label>
+          <label class="f"><span>Lugar pactado</span><input type="text" id="i-lugar" placeholder="Ej.: Puerto de Buenaventura"></label>
+        </div>
+        <label class="f"><span>Observaciones</span><textarea id="q-obs" placeholder="Cuéntanos tiempos, frecuencia de compra, si deseas muestra…"></textarea></label>
+        <label style="display:flex;gap:10px;align-items:flex-start;font-size:.9rem"><input type="checkbox" id="q-terms" style="margin-top:4px"> <span>Acepto los términos comerciales. Entiendo que esta solicitud no reserva inventario y que el precio llega en una oferta privada.</span></label>
+        <p id="qErr" style="color:var(--cherry);font-weight:600" hidden></p>
+        <div><button class="btn btn-primary" type="submit">Preparar solicitud</button></div>
+        <div id="qResult"></div>
+      </form>
+      <aside style="display:grid;gap:14px">
+        <div class="notice"><b>Demostración</b><span>Este formulario todavía no envía datos. Se conectará al canal real de la Unidad Comercial Conjunta.</span></div>
+        <div class="card"><h3>Qué pasa después</h3><ol class="olsteps" style="gap:8px" id="afterQuote"></ol></div>
+        <div class="card"><h3>¿Necesitas una muestra?</h3><p>Las muestras pueden ser gratuitas o pagadas. Cada asociación aprueba la extracción de su lote y el costo queda asignado a quien la financia. Indícalo en observaciones.</p></div>
+      </aside>
+    </div>
+  </section>
+</section>
+
+<!-- ============ PRODUCTORES ============ -->
+<section class="page" data-page="productores" hidden>
+  <div class="hero sub"><div class="wrap">
+    <div class="copy">
+      <span class="eyebrow">Para caficultores asociados</span>
+      <h1>¿Cómo hacer parte del ecosistema?</h1>
+      <p class="lead">Si eres productor de café en el Tolima y perteneces, o quieres pertenecer, a una de las asociaciones, aquí te explicamos qué ganas y cómo vincularte.</p>
+    </div>
+    <div class="hero-art"><div class="disc"></div><div data-branch></div></div>
+  </div></div>
+
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">¿Por qué unirse?</span><h2>Beneficios para el productor</h2></div>
+      <div class="grid g3" id="benefits"></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Tu portal</span><h2>Toda tu información, en un solo lugar</h2><p class="lead">Cada productor tendrá su propia cuenta para consultar su café, sus ventas y sus pagos. Vista de ejemplo:</p></div>
+      <div class="portal" id="portal"></div>
+    </div>
+  </section>
+
+  <section class="sec alt">
+    <div class="wrap split" style="align-items:start">
+      <div style="display:grid;gap:14px">
+        <span class="eyebrow">Escuela Cafetera</span>
+        <h2 style="font-size:clamp(1.7rem,3.2vw,2.4rem)">Formación exclusiva para asociados</h2>
+        <p>Cada asociación administra sus propios cursos, presenciales y virtuales. Los contenidos aprobados se pueden compartir de forma voluntaria en la <b>Biblioteca Cafetera Digital</b>, privada para los productores de ambas asociaciones. Tu progreso y tus evaluaciones siguen siendo de tu asociación.</p>
+        <ol class="olsteps" id="school"></ol>
+      </div>
+      <div style="display:grid;gap:14px">
+        <span class="eyebrow">Paso a paso</span>
+        <h2 style="font-size:clamp(1.7rem,3.2vw,2.4rem)">Cómo vincularte</h2>
+        <ol class="olsteps" id="join"></ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Directorio</span><h2>Contacta a tu asociación</h2></div>
+      <div class="grid g3" id="directory"></div>
+      <div class="split" style="margin-top:44px;align-items:start">
+        <div style="display:grid;gap:12px"><h3 style="font-size:1.6rem">Comunícate con nosotros</h3><p class="lead">Escríbenos si quieres vincularte, tienes dudas sobre tu cuenta o quieres proponer un curso.</p></div>
+        <form class="formbox" id="contactForm" novalidate>
+          <label class="f"><span>Nombre completo</span><input type="text" id="c-name" required></label>
+          <label class="f"><span>Correo o celular</span><input type="text" id="c-mail" required></label>
+          <label class="f"><span>Asociación</span><select id="c-aso"></select></label>
+          <label class="f"><span>Mensaje</span><textarea id="c-msg" required></textarea></label>
+          <div><button class="btn btn-primary" type="submit">Enviar</button></div>
+          <div id="cResult"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ PUBLICACIONES ============ -->
+<section class="page" data-page="publicaciones" hidden>
+  <div class="hero sub"><div class="wrap">
+    <div class="copy">
+      <span class="eyebrow">Publicaciones y eventos</span>
+      <h1>Noticias, documentos y sesiones de trabajo</h1>
+      <p class="lead">Lo que avanza en la construcción del ecosistema, publicado para las asociaciones, los productores y los aliados.</p>
+    </div>
+    <div class="hero-art"><div class="disc"></div><div data-branch></div></div>
+  </div></div>
+  <section class="sec" style="padding-top:40px">
+    <div class="wrap">
+      <div class="filters" id="postFilters"></div>
+      <div class="grid g3" id="posts"></div>
+    </div>
+  </section>
+</section>
+</main>
+
+<section class="news">
+  <div class="wrap">
+    <div><h4>Mantente informado</h4><p>Recibe las novedades del ecosistema en tu correo.</p></div>
+    <form id="newsForm" novalidate><input type="email" id="news-mail" placeholder="Correo electrónico…" aria-label="Correo electrónico"><button type="submit">Suscribirme</button></form>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div style="display:grid;gap:12px">
+      <div class="flogo"><img src="img/logos/logo-completo.webp" alt="Logo Ecosistema Digital Solidario Cafetero" width="900" height="715"></div>
+      <p>10 asociaciones, 227 familias y 208 caficultores asociados de siete municipios del Tolima integran su oferta para mejorar su capacidad comercial, su transparencia y su acceso a mercados nacionales e internacionales.</p>
+      <h5 style="margin-top:8px">Impulsan</h5>
+      <div class="imp"><span>Asociación A · logo por incorporar</span><span>Asociación B · logo por incorporar</span><span>Aliado · por confirmar</span></div>
+    </div>
+    <div>
+      <h5>Navegación</h5>
+      <nav><a href="#inicio">Inicio</a><a href="#ecosistema">El Ecosistema</a><a href="#cafe">Nuestro Café</a><a href="#productores">Productores</a><a href="#publicaciones">Publicaciones</a><a href="#cotizar">Solicitar cotización</a></nav>
+    </div>
+    <div>
+      <h5>Síguenos</h5>
+      <p>Instagram · Facebook · WhatsApp<br><span style="opacity:.8">Enlaces por confirmar</span></p>
+      <h5 style="margin-top:16px">Contacto</h5>
+      <p>Tolima, Colombia<br><span style="opacity:.8">Correo y teléfono por confirmar</span></p>
+    </div>
+    <div class="copy"><span>© 2026 Ecosistema Digital Solidario Cafetero. Todos los derechos reservados.</span><span>Versión de trabajo 2.0</span></div>
+  </div>
+</footer>
+
+<script src="js/contenido.js"></script>
+<script src="js/mapa-datos.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
